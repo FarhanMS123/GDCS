@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Garbage Discharge Count System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			table.style, table.style th, table.style td {
+				border: 1px solid white;
+				margin:0;
+			}
+			table.style th, table.style td{
+				padding:0.2em;
+			}
+			#tbl_control tr>:nth-child(1){width:8em;}
+			#tbl_control tr>:nth-child(2){width:calc(100% - 9em);}
+		</style>
+	</head>
+	<body style="background:#222222;color:white;font-family:'Segoe UI';">
+		<div id="con_img" style="border:solid 1px white;min-height:5em;position:relative;">
+			<img id="img" style="width:100%;"></img>
+			<div id="line" style="border-top:solid 0.1em red;position:absolute;top:0px;left:0px;width:100%;"></div>
+		</div>
+		<div id="control" style="margin:1em 0em;">
+			<table id="tbl_control" style="width:100%">
+				<tr>
+					<td>Count Last</td>
+					<td id="last">0</td>
+				</tr>
+				<tr>
+					<td>Count Full</td>
+					<td id="full">0</td>
+				</tr>
+				<tr>
+					<td>Zoom</td>
+					<td>
+						Zoom_Out <input id="zo" type="range" min="0" max="10000" value="0" style="width:calc(100% - 10em);"></input><br />
+						X_Axis_____ <input id="zo_x" type="range" min="0" max="10000" value="0" style="width:calc(100% - 10em);"></input><br />
+						Y_Axis_____ <input id="zo_y" type="range" min="0" max="10000" value="0" style="width:calc(100% - 10em);"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>Line Height</td>
+					<td><input id="lh" type="range" min="0" max="10000" value="3333" style="width:calc(100% - 5em);"></input></td>
+				</tr>
+				<tr>
+					<td>Action</td>
+					<td>
+						<button onclick="change(0,0,0.3333,[0,0,0])">Reset</button>
+						<button onclick="change(0,0,lh.value/10000,[zo.value/10000,zo_x.value/10000,zo_y.value/10000])">Clear Data</button>
+						<button onclick="change(dt.last,dt.full,lh.value/10000,[zo.value/10000,zo_x.value/10000,zo_y.value/10000])">Change</button>
+						<button onclick="">Recorded File</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="full" style="margin:1em 0em;">
+			<textarea id="tafull" style="width:100%;height:16em;overflow:auto;"></textarea>
+		</div>
+		<script>
+			var dt = {};
+			var tafull = document.getElementById("tafull");
+			var last = document.getElementById("last");
+			var full = document.getElementById("full");
+			var lh = document.getElementById("lh");
+			var zo = document.getElementById("zo");
+			var zo_x = document.getElementById("zo_x");
+			var zo_y = document.getElementById("zo_y");
+			var bdone = false;
+			
+			setInterval(function(){
+				document.getElementById("line").style.top = document.getElementById("con_img").clientHeight - ((document.getElementById("lh").value / 10000) * document.getElementById("con_img").clientHeight);
+			}, 1);
+			var wsc_img = new WebSocket(`ws://${window.location.host}/img.ws`);
+			wsc_img.onmessage = function(ev){
+				//console.log(ev.data);
+				var img = document.getElementById("img");
+				img.setAttribute("src", "data:image/jpeg;base64," + ev.data);
+				//dt.img = ev.data;
+				//tafull.value = JSON.stringify(dt);
+			}
+			
+			var wsc_dt = new WebSocket(`ws://${window.location.host}/dt.ws`);
+			wsc_dt.onmessage = function(ev){
+				//console.log(ev.data);
+				dt = JSON.parse(ev.data);
+				last.innerText = dt.last;
+				full.innerText = dt.full;
+				if(bdone == false){
+					lh.value = dt.line * 10000
+					zo.value = dt.zoom[0] * 10000
+					zo_x.value = dt.zoom[1] * 10000
+					zo_y.value = dt.zoom[2] * 10000
+				}
+				tafull.value = JSON.stringify(dt);
+				bdone = true;
+			}
+			
+			function change(last, full, line, zoom){
+				if(last == undefined) last = dt.last;
+				if(full == undefined) full = dt.full;
+				if(line == undefined) line = dt.line;
+				if(zoom == undefined) zoom = dt.zoom;
+				
+				var frmDt = new FormData();
+				frmDt.append("last", last);
+				frmDt.append("full", full);
+				frmDt.append("line", line);
+				frmDt.append("zoom", JSON.stringify(zoom));
+				
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", "/ctrl.njs", true);
+				xhr.send(frmDt);
+				
+				console.log([frmDt]);
+			}
+		</script>
+	</body>
+</html>

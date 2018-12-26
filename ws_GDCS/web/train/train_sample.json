@@ -1,0 +1,6 @@
+[
+	{"type":"file_http",
+	"link":"link/to/file.ext",
+	box:[x,y,w,h],
+	"label":"label"}
+]

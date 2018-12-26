@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<title>Training JSON</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			table.styled, table.styled th, table.styled td {
+				border-collapse: collapse;
+				border: 1px solid white;
+				margin:0;
+			}
+			table.styled th, table.styled td{
+				padding:0.2em;
+			}
+			.tbl-fixed tr>:nth-child(1){width:8em;}
+			.tbl-fixed tr>:nth-child(2){width:calc(100% - 9em);}
+			.b-lined{border-bottom:white 0.1em solid;}
+			
+			tr.active{background:#3F51B5;}
+			div.active{border:0.2em solid white;}
+		</style>
+	</head>
+	<body style="background:#222222;color:white;font-family:'Segoe UI';">
+		<div class="b-lined" style="padding-bottom:1em;margin-bottom:1em;">
+			<h4>1. Select an image</h4>
+			<p>
+			Select an image or upload and click "Select the file" button. <br />
+			You can upload an image to be trained and re-select again. <br/>
+			<br />
+			Note : We didnt design for security. Please dont break the program.
+			</p>
+			<input id="file" type="file"></input> <button onclick="upload();">Upload</button> <br />
+			<br />
+			<button onclick="refresh_list();">Refresh File List</button>
+			<br />
+			<table class="styled">
+				<tr>
+					<th>Name</th>
+					<th>Date modified</th>
+				</tr>
+				<tr class="active">
+					<td>This is a file.png</td>
+					<td>22 08 2018</td>
+				</tr>
+			</table>
+			<br />
+			<button onclick="select_show();">Select the file</button>
+			<script>
+				function upload(){}
+				function refresh_list(){}
+				function show_files(){}
+				function select_list(){}
+			</script>
+		</div>
+		<div class="b-lined" style="padding-bottom:1em;margin-bottom:1em;">
+			<h4>2. Mark the object(s)</h4>
+			<p>
+			Mark object(s) to be train. <br />
+			Add rect, move that, resize, and label the shape to fit the train object. <br />
+			</p>
+			<div style="border:white solid 0.1em;width:100%;height:50em;"></div>
+			<br />
+			<div style="background:black;padding:1em;">
+				<button onclick="refresh_rect();">Refresh</button><button onclick="add()">Add Shape</button><button onclick="unselect_rect();">Unselect</button><button onclick="delete_rect">Delete</button>
+				<div style="margin-top:1em;">
+					<div style="background:green;padding:0.5em;color:white;display:inline-block;">
+						"label" <br />
+						(x, y) <br />
+						{w, h}
+					</div>
+				</div>
+			</div>
+			<script>
+				var rect = [];
+				var sel = -1;
+				
+				function refresh_rect(){}
+				function select_show(){}
+				function add(){}
+				function select_rect(){}
+				function unselect_rect(){}
+				function delete_rect(){}
+			</script>
+		</div>
+		<div class="b-lined" style="padding-bottom:1em;margin-bottom:1em;">
+			<h4>3. Submit the mark(s)</h4>
+			<p>
+				Check back all your marks. All marks can't  be re-edit. <br />
+				You should really make sure your marks are in right place. <br />
+				Click "Submit" button to save them all. <br />
+				If it done. Rerun the script.
+			</p>
+			<button onclick="submit_train">Submit</button>
+			<script>
+				function submit_train(){}
+			</script>
+		</div>
+		<p style="text-align:center;">
+			Garbage Discharge Count System <br />
+			SMAN 85 Jakarta Barat @ 2018 <br />
+			Rekayasa Teknologi KIR Jakarta Barat <br />
+		</p>
+	</body>
+</html>
