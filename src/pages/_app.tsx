@@ -1,6 +1,10 @@
-import '@/styles/globals.css'
+import { FluentProvider, teamsDarkTheme } from '@fluentui/react-components';
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <FluentProvider theme={teamsDarkTheme}>
+      <Component {...pageProps} />
+    </FluentProvider>
+  );
 }
