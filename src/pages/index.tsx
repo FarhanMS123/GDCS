@@ -1,4 +1,5 @@
 import Connector from '@/components/Main/Connector';
+import Viewer from '@/components/Main/Viewer';
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import Head from 'next/head';
 
@@ -24,6 +25,7 @@ export default function Main() {
       </Head>
       <main className={classes.root}>
         <Connector />
+        <Viewer />
       </main>
     </>
   );
