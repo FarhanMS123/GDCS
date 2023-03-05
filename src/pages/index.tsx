@@ -6,10 +6,13 @@ import Head from 'next/head';
 const useMainStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground3,
-    width: 'calc(100% - 2rem)',
-    minHeight: 'calc(100% - 2rem)',
-    ...shorthands.padding('1rem', '1rem'),
+    width: `calc(100% - (2 * ${tokens.spacingHorizontalL}))`,
+    minHeight: `calc(100% - (2 * ${tokens.spacingVerticalL}))`,
+    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalL),
   },
+  gapElement: {
+    ...shorthands.margin(tokens.spacingVerticalL, 0),
+  }
 });
 
 export default function Main() {
@@ -25,7 +28,7 @@ export default function Main() {
       </Head>
       <main className={classes.root}>
         <Connector />
-        <Viewer />
+        <Viewer className={classes.gapElement} />
       </main>
     </>
   );

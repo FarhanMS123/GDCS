@@ -3,7 +3,7 @@ import { Button, Divider, Input, Label, makeStyles, mergeClasses, shorthands, Te
 import { Wrench16Filled, Wrench20Filled, WrenchFilled } from "@fluentui/react-icons";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-const useConnectorStyles = makeStyles({
+export const useConnectorStyles = makeStyles({
   root: {
     width: '16rem',
     display: 'flex',
@@ -22,8 +22,8 @@ const useConnectorStyles = makeStyles({
     justifyContent: 'space-between'
   },
   toolbar: {
-    ...shorthands.margin('0px'),
-    ...shorthands.padding('0px'),
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
     justifyContent: 'flex-end'
   },
 })
