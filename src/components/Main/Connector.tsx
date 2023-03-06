@@ -1,7 +1,10 @@
+import { RootState } from "@/redux";
+import { GdcsState, setConnectionState } from "@/redux/gdcs.slice";
 import { useCardStyles } from "@/styles/card.styles";
 import { Button, Divider, Input, Label, makeStyles, mergeClasses, shorthands, Text, tokens, Toolbar, ToolbarButton, useId } from "@fluentui/react-components";
 import { Wrench16Filled, Wrench20Filled, WrenchFilled } from "@fluentui/react-icons";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const useConnectorStyles = makeStyles({
   root: {
@@ -28,18 +31,18 @@ export const useConnectorStyles = makeStyles({
   },
 })
 
-export type Status = 'closed' | 'established' | 'wait';
-export type StateStatus = [Status, Dispatch<SetStateAction<Status>>];
-
 /**
  * Create Room, Connect, Disconnect, Reconnect, Generate
  * @returns 
  */
 
 export default function Connector(){
-  const [status, setStatus]: StateStatus = useState('closed' as Status);
   const classes = useConnectorStyles();
   const c_card = useCardStyles();
+  
+  const dispatch = useDispatch();
+  const status: GdcsState['status'] = useSelector((state: RootState) => state.gdcs.status);
+  const setStatus = (status: GdcsState['status']) => dispatch(setConnectionState(status));
 
   if (status == 'wait') setTimeout(() => { setStatus('established') }, 3000);
 

@@ -4,12 +4,16 @@ export interface GdcsState {
     status: 'closed' | 'established' | 'wait';
     room: string;
     camera: string | null;
+    rotate: -90 | 0 | 90 | 180;
+    ratio: number; // width / height
 };
 
 export const initialState: GdcsState = {
     status: 'closed',
     room: '',
     camera: null,
+    rotate: 0,
+    ratio: 0,
 };
 
 export const gdcsSlice = createSlice({
