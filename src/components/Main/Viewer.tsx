@@ -21,9 +21,9 @@ export default function Viewer({ className }: ViewerProps) {
   const c_card = useCardStyles();
 
   return (
-    <div className={mergeClasses(classes.root, className)}>
-      <div className={mergeClasses(c_card.root, classes.card)}></div>
-      <div className={mergeClasses(c_card.root, classes.card)}></div>
+    <div className={mergeClasses(c_card.root, classes.root, className)}>
+      <div></div>
+      <div></div>
     </div>
   );
 }

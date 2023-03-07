@@ -41,19 +41,19 @@ export default function Connector(){
   const c_card = useCardStyles();
   
   const dispatch = useDispatch();
-  const status: GdcsState['status'] = useSelector((state: RootState) => state.gdcs.status);
-  const setStatus = (status: GdcsState['status']) => dispatch(setConnectionState(status));
+  const status = useSelector((state: RootState) => state.gdcs.status);
+  const room = useSelector((state: RootState) => state.gdcs.room);
 
-  if (status == 'wait') setTimeout(() => { setStatus('established') }, 3000);
+  if (status == 'wait') setTimeout(() => { dispatch(setConnectionState('established')) }, 3000);
 
   return (
     <div className={mergeClasses(c_card.root, classes.root)}>
       <Input appearance="filled-lighter-shadow" contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
       <div className={classes.buttonContainer}>
         <Button disabled={ status != 'closed' }>Create Room</Button>
-        { status == 'closed' && <Button appearance="primary" onClick={() => setStatus('wait')}>Connect</Button>}
+        { status == 'closed' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('wait'))}>Connect</Button>}
         { status == 'wait' && <Button appearance="primary" disabled>Connecting</Button>}
-        { status == 'established' && <Button appearance="primary" onClick={() => setStatus('closed')}>Disconnect</Button>}
+        { status == 'established' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('closed'))}>Disconnect</Button>}
       </div>
       <Divider />
       <Toolbar className={classes.toolbar}>
