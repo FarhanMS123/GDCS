@@ -1,3 +1,4 @@
+import 'normalize.css';
 import { Metadata } from "next"
 import Context from "./contexts"
 

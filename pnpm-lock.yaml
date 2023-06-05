@@ -1,9 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fluentui/react-components': ^9.15.5
-  '@fluentui/react-icons': ^2.0.195
-  '@next/font': 13.1.6
+  '@fluentui/react-components': ^9.21.0
+  '@fluentui/react-icons': ^2.0.203
   '@reduxjs/toolkit': ^1.9.3
   '@types/node': 20.2.5
   '@types/react': 18.2.8
@@ -21,7 +20,6 @@ specifiers:
 dependencies:
   '@fluentui/react-components': 9.21.0_di5tp42szlb4tl4cql66fs7hei
   '@fluentui/react-icons': 2.0.203_react@18.2.0
-  '@next/font': 13.1.6
   '@reduxjs/toolkit': 1.9.5_mdrgh7pftervsmldwkouzrv5ry
   '@types/node': 20.2.5
   '@types/react': 18.2.8
@@ -1290,10 +1288,6 @@ packages:
     resolution: {integrity: sha512-5jnh7q6I15efnjR/rR+/TGTc9hn53g3JTbEjAMjmeQiExKqEUgIXqrHI5zlTNlNyzCPkBB860/ctxXheZaF2Vw==}
     dependencies:
       glob: 7.1.7
-    dev: false
-
-  /@next/font/13.1.6:
-    resolution: {integrity: sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ==}
     dev: false
 
   /@next/swc-darwin-arm64/13.4.4:
