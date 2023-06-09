@@ -3,12 +3,20 @@ import { makeStyles, mergeClasses, shorthands, tokens } from "@fluentui/react-co
 
 export const useViewerStyles = makeStyles({
   root: {
-    position: "relative",
-    // ...shorthands.padding(0),
+    width: '100%',
+    display: 'flex',
+    ...shorthands.gap(tokens.spacingVerticalL, tokens.spacingHorizontalL),
+  },
+  card: {
+    width: `calc(50% - ${tokens.spacingVerticalL})`,
   },
 });
 
-export default function Viewer({ className }: React.AllHTMLAttributes<any>) {
+export type ViewerProps = {
+  className: string;
+};
+
+export default function Viewer({ className }: ViewerProps) {
   const classes = useViewerStyles();
   const c_card = useCardStyles();
 

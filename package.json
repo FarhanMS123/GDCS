@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.21.0",
-    "@fluentui/react-icons": "^2.0.203",
+    "@fluentui/react-components": "^9.15.5",
+    "@fluentui/react-icons": "^2.0.195",
+    "@next/font": "13.1.6",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
@@ -28,8 +29,6 @@
     "scheduler": ">=0.19.0 <0.20.0 || >=0.20.0 <0.21.0"
   },
   "peerDependencies": {
-    "@babel/core": ">=7.0.0 <8.0.0",
-    "@babel/preset-env": "7.1.6",
     "scheduler": ">=0.19.0 <0.20.0 || >=0.20.0 <0.21.0"
   }
 }
