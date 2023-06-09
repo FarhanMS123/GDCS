@@ -1,17 +1,24 @@
+// 'use client';
+
 import { RootState } from "@/redux";
 import { GdcsState, setConnectionState } from "@/redux/gdcs.slice";
 import { useCardStyles } from "@/styles/card.styles";
 import { Button, Divider, Input, Label, makeStyles, mergeClasses, shorthands, Text, tokens, Toolbar, ToolbarButton, useId } from "@fluentui/react-components";
 import { Wrench16Filled, Wrench20Filled, WrenchFilled } from "@fluentui/react-icons";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as actions from '@/actions/gdcs';
 
 export const useConnectorStyles = makeStyles({
   root: {
     width: '16rem',
+    maxWidth: `calc(100% - (2 * ${tokens.spacingHorizontalL}))`,
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.gap(0, tokens.spacingVerticalS)
+  },
+  inputRoom: {
+    boxShadow: tokens.shadow2,
   },
   textContentBefore: {
     ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
@@ -29,14 +36,14 @@ export const useConnectorStyles = makeStyles({
     ...shorthands.padding(0),
     justifyContent: 'flex-end'
   },
-})
+});
 
 /**
  * Create Room, Connect, Disconnect, Reconnect, Generate
  * @returns 
  */
 
-export default function Connector(){
+export default function Connector({ className }: React.AllHTMLAttributes<HTMLDivElement>){
   const classes = useConnectorStyles();
   const c_card = useCardStyles();
   
@@ -46,9 +53,11 @@ export default function Connector(){
 
   if (status == 'wait') setTimeout(() => { dispatch(setConnectionState('established')) }, 3000);
 
+  actions.hehe();
+
   return (
-    <div className={mergeClasses(c_card.root, classes.root)}>
-      <Input appearance="filled-lighter-shadow" contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
+    <div className={mergeClasses(c_card.root, classes.root, className)}>
+      <Input appearance="filled-lighter" className={classes.inputRoom} contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
       <div className={classes.buttonContainer}>
         <Button disabled={ status != 'closed' }>Create Room</Button>
         { status == 'closed' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('wait'))}>Connect</Button>}

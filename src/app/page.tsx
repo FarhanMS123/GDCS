@@ -1,6 +1,6 @@
 'use client';
-import Connector from '@/components/Main/Connector';
-import Viewer from '@/components/Main/Viewer';
+import Connector from '@/app/Connector';
+import Viewer from '@/app/Viewer';
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useMainStyles = makeStyles({
