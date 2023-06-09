@@ -1,6 +1,6 @@
 import 'normalize.css';
 import { Metadata } from "next"
-import Context from "./Context"
+import Context from "./contexts"
 
 export const metadata: Metadata = {
   title: 'Garbage Discharge Count System',
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Context>
-          { children }
+          {children}
         </Context>
       </body>
     </html>
