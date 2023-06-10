@@ -13,6 +13,9 @@ export const useConnectorStyles = makeStyles({
     flexDirection: 'column',
     ...shorthands.gap(0, tokens.spacingVerticalS)
   },
+  inputStyle: {
+    boxShadow: tokens.shadow2
+  },
   textContentBefore: {
     ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     paddingRight: tokens.spacingHorizontalS,
@@ -48,7 +51,7 @@ export default function Connector(){
 
   return (
     <div className={mergeClasses(c_card.root, classes.root)}>
-      <Input appearance="filled-lighter-shadow" contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
+      <Input appearance="filled-lighter" className={classes.inputStyle} contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
       <div className={classes.buttonContainer}>
         <Button disabled={ status != 'closed' }>Create Room</Button>
         { status == 'closed' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('wait'))}>Connect</Button>}

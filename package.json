@@ -11,7 +11,6 @@
   "dependencies": {
     "@fluentui/react-components": "^9.21.0",
     "@fluentui/react-icons": "^2.0.203",
-    "@next/font": "13.4.4",
     "@reduxjs/toolkit": "^1.9.5",
     "next": "13.4.4",
     "normalize.css": "^8.0.1",
