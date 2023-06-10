@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 
 import { RootState } from "@/redux";
 import { GdcsState, setConnectionState } from "@/redux/gdcs.slice";
@@ -7,7 +7,6 @@ import { Button, Divider, Input, Label, makeStyles, mergeClasses, shorthands, Te
 import { Wrench16Filled, Wrench20Filled, WrenchFilled } from "@fluentui/react-icons";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from '@/actions/gdcs';
 
 export const useConnectorStyles = makeStyles({
   root: {
