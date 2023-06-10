@@ -53,8 +53,6 @@ export default function Connector({ className }: React.AllHTMLAttributes<HTMLDiv
 
   if (status == 'wait') setTimeout(() => { dispatch(setConnectionState('established')) }, 3000);
 
-  actions.hehe();
-
   return (
     <div className={mergeClasses(c_card.root, classes.root, className)}>
       <Input appearance="filled-lighter" className={classes.inputRoom} contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />

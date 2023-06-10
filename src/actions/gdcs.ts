@@ -17,7 +17,7 @@ global.Module = {
 
 global.cv = require('@/utils/opencv4.7.0');
 
-export const rooms: Rooms = {};
+const rooms: Rooms = {};
 
 export async function createOpenCV() {}
 
