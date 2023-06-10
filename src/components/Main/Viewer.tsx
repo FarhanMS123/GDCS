@@ -1,28 +1,35 @@
 import { useCardStyles } from "@/styles/card.styles";
-import { makeStyles, mergeClasses, shorthands, tokens } from "@fluentui/react-components";
+import { SelectTabData, SelectTabEvent, Tab, TabList, makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
+import { useState } from "react";
 
 export const useViewerStyles = makeStyles({
   root: {
-    width: '100%',
-    display: 'flex',
-    ...shorthands.gap(tokens.spacingVerticalL, tokens.spacingHorizontalL),
-  },
-  card: {
-    width: `calc(50% - ${tokens.spacingVerticalL})`,
+    width: '40rem',
+    height: '20rem',
+    position: "relative",
+    ...shorthands.padding(0),
   },
 });
 
-export type ViewerProps = {
-  className: string;
-};
+/**
+ * Camera, Canvas, Stream, Flag
+ * @returns 
+ */
 
-export default function Viewer({ className }: ViewerProps) {
+export default function Viewer({ className }: React.AllHTMLAttributes<HTMLDivElement>) {
   const classes = useViewerStyles();
   const c_card = useCardStyles();
 
+  const [selectedTab, selectTab] = useState("stream");
+
   return (
     <div className={mergeClasses(c_card.root, classes.root, className)}>
-      <div></div>
+      <TabList size="small" selectedValue={selectedTab} onTabSelect={(ev: SelectTabEvent, data: SelectTabData) => selectTab(data.value as string)}>
+        <Tab value="camera">Camera</Tab>
+        <Tab value="canvas">Canvas</Tab>
+        <Tab value="stream">Stream</Tab>
+        <Tab value="flag">Flag</Tab>
+      </TabList>
       <div></div>
     </div>
   );
