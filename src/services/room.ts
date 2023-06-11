@@ -1,6 +1,10 @@
+import { createOpenCV } from "./gdcs";
+import { createRTC } from './wrtc';
+
 export type Room = {
     code: string,
-    rtc: string,
+    rtc: any,
+    ocv: any,
 }
 
 export type Rooms = {
@@ -9,4 +13,12 @@ export type Rooms = {
 
 export const rooms: Rooms = {};
 
-export function createRoom() {}
+export function createRoom() {
+    const code = "";
+    rooms[code] = {
+        code,
+        rtc: createRTC(),
+        ocv: createOpenCV(),
+    };
+    return rooms[code];
+}

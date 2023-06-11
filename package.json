@@ -19,7 +19,7 @@
     "react-dom": "18.2.0",
     "react-redux": "^8.0.7",
     "scheduler": "^0.20.2",
-    "socket.io": "^4.6.2"
+    "wrtc": "^0.4.7"
   },
   "devDependencies": {
     "@types/node": "20.2.6",
