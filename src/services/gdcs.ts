@@ -1,4 +1,4 @@
-var ocv = require("@/utils/opencv");
+export const ocv = require("@/utils/opencv");
 
 export function transformImage(){}
 export function base64ToMat(){}
