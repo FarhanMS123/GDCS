@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js",
+    "build": "tsc --declaration false && tsc-alias",
+    "build:dts": "tsc",
+    "dev": "tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +15,14 @@
   "dependencies": {
     "@trpc/server": "^10.32.0",
     "simple-peer": "^9.11.1",
-    "wrtc": "^0.4.7"
+    "wrtc": "^0.4.7",
+    "ws": "^8.13.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
+    "@types/simple-peer": "^9.11.5",
+    "@types/ws": "^8.5.5",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "eslint": "^8.43.0",

@@ -3,6 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@trpc/server': ^10.32.0
   '@types/node': ^20.3.1
+  '@types/simple-peer': ^9.11.5
+  '@types/ws': ^8.5.5
   '@typescript-eslint/eslint-plugin': ^5.60.0
   '@typescript-eslint/parser': ^5.60.0
   eslint: ^8.43.0
@@ -13,14 +15,20 @@ specifiers:
   tsx: ^3.12.7
   typescript: ^5.1.3
   wrtc: ^0.4.7
+  ws: ^8.13.0
+  zod: ^3.21.4
 
 dependencies:
   '@trpc/server': 10.32.0
   simple-peer: 9.11.1
   wrtc: 0.4.7
+  ws: 8.13.0
+  zod: 3.21.4
 
 devDependencies:
   '@types/node': 20.3.1
+  '@types/simple-peer': 9.11.5
+  '@types/ws': 8.5.5
   '@typescript-eslint/eslint-plugin': 5.60.0_6yzi2ymi2jevhjfd3hf6w262e4
   '@typescript-eslint/parser': 5.60.0_7yfldhli4vs6yywnkyiujhawka
   eslint: 8.43.0
@@ -343,6 +351,18 @@ packages:
 
   /@types/semver/7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
+    dev: true
+
+  /@types/simple-peer/9.11.5:
+    resolution: {integrity: sha512-haXgWcAa3Y3Sn+T8lzkE4ErQUpYzhW6Cz2lh00RhQTyWt+xZ3s87wJPztUxlqSdFRqGhe2MQIBd0XsyHP3No4w==}
+    dependencies:
+      '@types/node': 20.3.1
+    dev: true
+
+  /@types/ws/8.5.5:
+    resolution: {integrity: sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==}
+    dependencies:
+      '@types/node': 20.3.1
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.60.0_6yzi2ymi2jevhjfd3hf6w262e4:
@@ -1710,6 +1730,19 @@ packages:
     bundledDependencies:
       - node-pre-gyp
 
+  /ws/8.13.0:
+    resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
+
   /yallist/3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: false
@@ -1722,3 +1755,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
