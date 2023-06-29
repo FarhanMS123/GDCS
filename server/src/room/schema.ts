@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 import Peer from 'simple-peer';
+import { createProcessor } from './processor';
 
 export type Room = {
   code: string;
@@ -8,7 +9,7 @@ export type Room = {
     stream: Peer.Instance | null;
     [code: string]: Peer.Instance | null;
   };
-  processor: unknown;
+  processor: null | ReturnType<typeof createProcessor>;
   parameters: object;
   metadata: object;
 };
@@ -25,4 +26,8 @@ export type SubsSchema = {
   identifier?: unknown;
   data: unknown;
   descriptor?: unknown;
+};
+
+export type CreateProcessorSchema = {
+  room: Room;
 };

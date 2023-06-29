@@ -9,6 +9,7 @@ import { observable } from '@trpc/server/observable';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 /// @ts-ignore
 import wrtc from 'wrtc';
+import { createProcessor } from './processor';
 
 const rooms: Rooms = {};
 const clients: ClientsRoom = {};
@@ -50,6 +51,7 @@ export const roomRouter = router({
       metadata: {},
       parameters: {},
     };
+    rooms[code].processor = createProcessor({ room: rooms[code] });
   }),
 
   /**
@@ -73,12 +75,13 @@ export const roomRouter = router({
    */
   subsJoin: publicProcedure.input(RoomCode).subscription(({ input }) => {
     const room_code = input;
+    const room = rooms[room_code];
 
     const client_id = crypto.randomUUID();
     clients[client_id] = room_code;
 
     const peer = new Peer({ wrtc });
-    rooms[room_code].peers[client_id] = peer;
+    room.peers[client_id] = peer;
 
     return observable<SubsSchema>((emit) => {
       let emit_closed = false;
@@ -105,7 +108,7 @@ export const roomRouter = router({
 
       peer.on('close', () => {
         if (!!peer.destroyed) peer.destroy();
-        delete rooms[room_code].peers[client_id];
+        delete room.peers[client_id];
         delete clients[client_id];
         emit.complete();
       });
@@ -123,11 +126,11 @@ export const roomRouter = router({
    * from clients to processor.
    */
   subsStream: publicProcedure.input(RoomCode).subscription(({ input }) => {
-    if (!!rooms[input].peers.stream?.destroyed)
-      rooms[input].peers.stream?.destroy();
+    const room = rooms[input];
+    if (!!room.peers.stream?.destroyed) room.peers.stream?.destroy();
 
     const peer = new Peer({ wrtc });
-    rooms[input].peers.stream = peer;
+    room.peers.stream = peer;
 
     return observable((emit) => {
       let emit_closed = false;
@@ -153,7 +156,7 @@ export const roomRouter = router({
       });
 
       peer.on('stream', (stream) => {
-        // send stream to processor
+        room.processor?.pushStream(stream);
       });
 
       return () => {
