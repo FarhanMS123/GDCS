@@ -4,6 +4,9 @@ Include
 - [OpenCV 4.7.x (latest)](https://github.com/opencv/opencv/commit/131dab774c386217d323c00248b0276bd4033dda)
 - [OpenCV Contrib (latest)](https://github.com/opencv/opencv_contrib/commit/f10c84d48b0714f2b408c9e5cccfac1277c8e6cc)
 
+Following this tutorial: \
+https://docs.opencv.org/4.7.0/d4/da1/tutorial_js_setup.html
+
 ```bash
 # latest
 git clone https://github.com/opencv/opencv.git opencv_latest && \
