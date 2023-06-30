@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/modules/photo/include -I/src/build_wasm_contrib/modules/photo -I/src/modules/core/include -I/src/modules/imgproc/include 

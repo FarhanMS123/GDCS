@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_aruco.a  CMakeFiles/opencv_aruco.dir/src/aruco.cpp.o CMakeFiles/opencv_aruco.dir/src/aruco_calib.cpp.o CMakeFiles/opencv_aruco.dir/src/charuco.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_aruco.a

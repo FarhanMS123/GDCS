@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_dnn_objdetect.a  CMakeFiles/opencv_dnn_objdetect.dir/src/core_detect.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_dnn_objdetect.a

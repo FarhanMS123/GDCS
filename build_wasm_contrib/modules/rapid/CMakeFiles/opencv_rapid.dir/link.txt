@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_rapid.a  CMakeFiles/opencv_rapid.dir/src/histogram.cpp.o CMakeFiles/opencv_rapid.dir/src/rapid.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_rapid.a

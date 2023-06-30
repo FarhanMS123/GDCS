@@ -1,0 +1,1 @@
+-I/src/3rdparty/quirc/include -I/src/build_wasm_contrib 

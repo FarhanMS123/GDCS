@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/bioinspired/include -I/src/build_wasm_contrib/modules/bioinspired -I/src/modules/core/include 

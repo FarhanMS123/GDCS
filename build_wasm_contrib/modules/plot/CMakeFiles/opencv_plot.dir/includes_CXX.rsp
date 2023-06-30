@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/plot/include -I/src/build_wasm_contrib/modules/plot -I/src/modules/core/include -I/src/modules/imgproc/include 

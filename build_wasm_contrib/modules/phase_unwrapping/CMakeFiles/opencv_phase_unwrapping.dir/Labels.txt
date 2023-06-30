@@ -1,0 +1,27 @@
+# Target labels
+ Extra
+ opencv_phase_unwrapping
+ Module
+# Source files and their labels
+/src/opencv_contrib/modules/phase_unwrapping/include/opencv2/phase_unwrapping.hpp
+ Extra
+ opencv_phase_unwrapping
+ Module
+/src/opencv_contrib/modules/phase_unwrapping/include/opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+ Extra
+ opencv_phase_unwrapping
+ Module
+/src/opencv_contrib/modules/phase_unwrapping/include/opencv2/phase_unwrapping/phase_unwrapping.hpp
+ Extra
+ opencv_phase_unwrapping
+ Module
+/src/opencv_contrib/modules/phase_unwrapping/src/histogramphaseunwrapping.cpp
+ Extra
+ opencv_phase_unwrapping
+ Module
+/src/opencv_contrib/modules/phase_unwrapping/src/precomp.hpp
+ Extra
+ opencv_phase_unwrapping
+ Module
+/src/build_wasm_contrib/cvconfig.h
+/src/build_wasm_contrib/opencv2/opencv_modules.hpp

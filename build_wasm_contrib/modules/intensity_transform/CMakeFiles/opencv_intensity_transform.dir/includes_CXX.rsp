@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/intensity_transform/include -I/src/build_wasm_contrib/modules/intensity_transform -I/src/modules/core/include -I/src/modules/imgproc/include 

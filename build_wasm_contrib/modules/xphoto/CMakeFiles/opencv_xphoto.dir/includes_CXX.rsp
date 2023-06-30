@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/xphoto/include -I/src/build_wasm_contrib/modules/xphoto -I/src/modules/core/include -I/src/modules/imgproc/include -I/src/modules/photo/include 

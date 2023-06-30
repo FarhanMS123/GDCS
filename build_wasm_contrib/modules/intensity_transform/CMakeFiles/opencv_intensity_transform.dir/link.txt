@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_intensity_transform.a  CMakeFiles/opencv_intensity_transform.dir/src/bimef.cpp.o CMakeFiles/opencv_intensity_transform.dir/src/intensity_transform.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_intensity_transform.a

@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_plot.a  CMakeFiles/opencv_plot.dir/src/plot.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_plot.a

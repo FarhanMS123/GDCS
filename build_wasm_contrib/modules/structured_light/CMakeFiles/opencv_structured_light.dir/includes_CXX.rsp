@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/structured_light/include -I/src/build_wasm_contrib/modules/structured_light -I/src/modules/core/include -I/src/modules/flann/include -I/src/modules/imgproc/include -I/src/opencv_contrib/modules/phase_unwrapping/include -I/src/modules/features2d/include -I/src/modules/calib3d/include 

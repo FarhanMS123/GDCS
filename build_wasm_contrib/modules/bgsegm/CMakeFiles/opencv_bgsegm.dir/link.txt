@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_bgsegm.a  CMakeFiles/opencv_bgsegm.dir/src/bgfg_gaussmix.cpp.o CMakeFiles/opencv_bgsegm.dir/src/bgfg_gmg.cpp.o CMakeFiles/opencv_bgsegm.dir/src/bgfg_gsoc.cpp.o CMakeFiles/opencv_bgsegm.dir/src/bgfg_subcnt.cpp.o CMakeFiles/opencv_bgsegm.dir/src/synthetic_seq.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_bgsegm.a

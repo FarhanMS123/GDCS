@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/opencv_contrib/modules/dpm/include -I/src/build_wasm_contrib/modules/dpm -I/src/modules/core/include -I/src/modules/flann/include -I/src/modules/imgproc/include -I/src/modules/dnn/include -I/src/modules/features2d/include -I/src/modules/calib3d/include -I/src/modules/objdetect/include 

@@ -1,0 +1,2 @@
+/emsdk/upstream/emscripten/emar qc ../../lib/libopencv_phase_unwrapping.a  CMakeFiles/opencv_phase_unwrapping.dir/src/histogramphaseunwrapping.cpp.o
+/emsdk/upstream/emscripten/emranlib ../../lib/libopencv_phase_unwrapping.a

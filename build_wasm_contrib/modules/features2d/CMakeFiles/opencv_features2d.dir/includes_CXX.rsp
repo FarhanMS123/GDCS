@@ -1,0 +1,1 @@
+-I/src/build_wasm_contrib -I/src/modules/features2d/include -I/src/build_wasm_contrib/modules/features2d -I/src/modules/core/include -I/src/modules/flann/include -I/src/modules/imgproc/include 
