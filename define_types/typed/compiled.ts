@@ -1,13 +1,5 @@
-import literal from "./literal.json";
-import query from "./query.json";
+import type CV from './opencv';
 
-const l = {
-    ...literal,
-} as const;
-
-const q = {
-    ...query,
-} as const;
-
-type cv = Promise<typeof l>;
-export default cv;
+(async () => {
+    const cv: CV = await require("../../build_wasm_contrib/bin/opencv");
+});

@@ -28,3 +28,32 @@ docker run --rm -v $(pwd):/src -u $(id -u):$(id -g) emscripten/emsdk:2.0.10 emcm
 --webnn: Web Neural Network, not compiled
 --build_doc: need doxygen
 ```
+
+## Compile Definition Typescript (.d.ts)
+
+```bash
+cd define_types
+npm i
+npm run build
+```
+
+## Some Analyzing Code
+
+```bash
+node --inspect
+```
+
+```ts
+const cv = await require("../build_wasm_contrib/bin/opencv.js");
+
+var types = {};
+for (const [k, v] of Object.entries(cv)) {
+    const _type = typeof v;
+    types[_type] = (types[_type] ?? 0) + 1;
+
+    if(_type == "object") {
+        console.log([k, _type, v.constructor?.name, v])
+    }
+}
+console.log(types);
+```
