@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@trpc/client': ^10.34.0
   '@trpc/server': ^10.32.0
   '@types/node': ^20.3.1
   '@types/simple-peer': ^9.11.5
@@ -26,6 +27,7 @@ dependencies:
   zod: 3.21.4
 
 devDependencies:
+  '@trpc/client': 10.34.0_@trpc+server@10.32.0
   '@types/node': 20.3.1
   '@types/simple-peer': 9.11.5
   '@types/ws': 8.5.5
@@ -337,9 +339,16 @@ packages:
       fastq: 1.15.0
     dev: true
 
+  /@trpc/client/10.34.0_@trpc+server@10.32.0:
+    resolution: {integrity: sha512-nqtDTIqSY/9syo2EjSy4WWWXPU9GsamEh9Tsg698gLAh1nhgFc5+/YYeb+Ne1pbvWGZ5/3t9Dcz3h4wMyyJ9gQ==}
+    peerDependencies:
+      '@trpc/server': 10.34.0
+    dependencies:
+      '@trpc/server': 10.32.0
+    dev: true
+
   /@trpc/server/10.32.0:
     resolution: {integrity: sha512-C4HRHpaffw2pekpfNSHQtwlocq6kwAQq48mR9RIsUZGNbjXZbgvBC927vRP6QPAoG+n4oHPWyZ9G1hs3KMcPiw==}
-    dev: false
 
   /@types/json-schema/7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}

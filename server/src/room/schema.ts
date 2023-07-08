@@ -9,7 +9,7 @@ export type Room = {
     stream: Peer.Instance | null;
     [code: string]: Peer.Instance | null;
   };
-  processor: null | ReturnType<typeof createProcessor>;
+  processor: null | Awaited<ReturnType<typeof createProcessor>>;
   parameters: object;
   metadata: object;
 };

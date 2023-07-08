@@ -39,7 +39,7 @@ export const roomRouter = router({
    * include create stream peer, setup event emitter, and
    * construct OpenCV workspace for processor
    */
-  create: publicProcedure.mutation(() => {
+  create: publicProcedure.mutation(async () => {
     const code = crypto.randomUUID();
     rooms[code] = {
       code,
@@ -51,7 +51,10 @@ export const roomRouter = router({
       metadata: {},
       parameters: {},
     };
-    rooms[code].processor = createProcessor({ room: rooms[code] });
+    rooms[code].processor = await createProcessor({ room: rooms[code] });
+
+    const { metadata, parameters, peers } = rooms[code];
+    return { code, metadata, parameters, peers: Object.keys(peers) };
   }),
 
   /**
@@ -74,16 +77,16 @@ export const roomRouter = router({
    * as live view.
    */
   subsJoin: publicProcedure.input(RoomCode).subscription(({ input }) => {
-    const room_code = input;
-    const room = rooms[room_code];
-
-    const client_id = crypto.randomUUID();
-    clients[client_id] = room_code;
-
-    const peer = new Peer({ wrtc });
-    room.peers[client_id] = peer;
-
     return observable<SubsSchema>((emit) => {
+      const room_code = input;
+      const room = rooms[room_code];
+
+      const client_id = crypto.randomUUID();
+      clients[client_id] = room_code;
+
+      const peer = new Peer({ wrtc });
+      room.peers[client_id] = peer;
+
       let emit_closed = false;
 
       emit.next({
