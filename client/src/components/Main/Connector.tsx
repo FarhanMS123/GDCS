@@ -1,10 +1,11 @@
 'use client';
 
 import { RootState } from "@/redux";
-import { GdcsState, setConnectionState } from "@/redux/gdcs.slice";
+import { useCreateRoom, useJoinRoom } from "@/services/rooms";
 import { useCardStyles } from "@/styles/card.styles";
-import { Button, Divider, Input, makeStyles, mergeClasses, shorthands, Text, tokens, Toolbar, ToolbarButton } from "@fluentui/react-components";
+import { Button, Divider, Input, makeStyles, mergeClasses, shorthands, Spinner, Text, tokens, Toolbar, ToolbarButton } from "@fluentui/react-components";
 import { WrenchFilled } from "@fluentui/react-icons";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const useConnectorStyles = makeStyles({
@@ -41,28 +42,43 @@ export const useConnectorStyles = makeStyles({
  * @returns 
  */
 
-export default function Connector({ className }: React.AllHTMLAttributes<HTMLDivElement>){
+export default function Connector({ className }: React.AllHTMLAttributes<HTMLDivElement>) {
   const classes = useConnectorStyles();
   const c_card = useCardStyles();
-  
-  const dispatch = useDispatch();
+
   const status = useSelector((state: RootState) => state.gdcs.status);
   const room = useSelector((state: RootState) => state.gdcs.room);
 
-  if (status == 'wait') setTimeout(() => { dispatch(setConnectionState('established')) }, 3000);
+  const { createRoom } = useCreateRoom();
+  const { joinRoom, setStatus } = useJoinRoom();
+
+  const [isCreatingRoom, setIsCreatingRoom] = useState(false);
+
+  async function promptCreateRoom() {
+    try {
+      setIsCreatingRoom(true);
+      await createRoom();
+    } finally {
+      setIsCreatingRoom(false)
+    }
+  }
 
   return (
     <div className={mergeClasses(c_card.root, classes.root, className)}>
-      <Input appearance="filled-lighter" className={classes.inputRoom} contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} />
+      <Input appearance="filled-lighter" className={classes.inputRoom} contentBefore={<Text className={classes.textContentBefore} weight="medium">Room</Text>} value={room} />
       <div className={classes.buttonContainer}>
-        <Button disabled={ status != 'closed' }>Create Room</Button>
-        { status == 'closed' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('wait'))}>Connect</Button>}
-        { status == 'wait' && <Button appearance="primary" disabled>Connecting</Button>}
-        { status == 'established' && <Button appearance="primary" onClick={() => dispatch(setConnectionState('closed'))}>Disconnect</Button>}
+        <Button
+          disabled={status != 'closed' || isCreatingRoom}
+          icon={isCreatingRoom ? <Spinner size="tiny" /> : <></>}
+          iconPosition="after"
+          onClick={promptCreateRoom}>Create Room</Button>
+        {status == 'closed' && <Button key="bc1" appearance="primary" onClick={() => joinRoom(room)}>Connect</Button>}
+        {status == 'wait' && <Button key="bc2" appearance="primary" disabled>Connecting...</Button>}
+        {status == 'established' && <Button key="bc3" appearance="primary" onClick={() => setStatus('closed')}>Disconnect</Button>}
       </div>
       <Divider />
       <Toolbar className={classes.toolbar}>
-        <ToolbarButton icon={ <WrenchFilled /> } />
+        <ToolbarButton icon={<WrenchFilled />} />
       </Toolbar>
     </div>
   );
