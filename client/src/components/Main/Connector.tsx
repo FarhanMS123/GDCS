@@ -1,5 +1,3 @@
-'use client';
-
 import { RootState } from "@/redux";
 import { useCreateRoom, useJoinRoom } from "@/services/rooms";
 import { useCardStyles } from "@/styles/card.styles";
@@ -29,6 +27,9 @@ export const useConnectorStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  divider: {
+    marginTop: tokens.spacingVerticalSNudge,
   },
   toolbar: {
     ...shorthands.margin(0),
@@ -69,14 +70,14 @@ export default function Connector({ className }: React.AllHTMLAttributes<HTMLDiv
       <div className={classes.buttonContainer}>
         <Button
           disabled={status != 'closed' || isCreatingRoom}
-          icon={isCreatingRoom ? <Spinner size="tiny" /> : <></>}
+          icon={isCreatingRoom ? <Spinner size="tiny" /> : null}
           iconPosition="after"
           onClick={promptCreateRoom}>Create Room</Button>
         {status == 'closed' && <Button key="bc1" appearance="primary" onClick={() => joinRoom(room)}>Connect</Button>}
         {status == 'wait' && <Button key="bc2" appearance="primary" disabled>Connecting...</Button>}
         {status == 'established' && <Button key="bc3" appearance="primary" onClick={() => setStatus('closed')}>Disconnect</Button>}
       </div>
-      <Divider />
+      <Divider className={classes.divider} />
       <Toolbar className={classes.toolbar}>
         <ToolbarButton icon={<WrenchFilled />} />
       </Toolbar>

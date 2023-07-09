@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Peer from 'simple-peer';
+import {Instance as PeerInstance} from 'simple-peer';
 
 export interface GdcsState {
     status: 'closed' | 'established' | 'wait';
     room: string;
     client_id: string;
-    peer: Peer.Instance | null;
+    peer: PeerInstance | null;
     camera: string | null;
     rotate: -90 | 0 | 90 | 180;
     ratio: number; // width / height

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import client from '@/utils/trpc';
 import { GdcsState, setClientId, setConnectionState, setPeer, setRoom } from "@/redux/gdcs.slice";
-import Peer from 'simple-peer';
+import Peer from 'simple-peer/simplepeer.min.js';
 import { RootState } from "@/redux";
 import { useEffect, useState } from "react";
 import { Unsubscribable } from "@trpc/server/observable";
@@ -47,7 +47,10 @@ export function useJoinRoom() {
                         dispatchSetClientId(client_id);
                         dispatchSetPeer(peer);
 
-                        peer.on("signal", (signal) => client.room.signalPeer.mutate({ client_id: client_id as string, data: signal }));
+                        peer.on("signal", (signal) => {
+                            client.room.signalPeer.mutate({ client_id: <string>client_id, data: signal });
+                            console.log(signal);
+                        });
                         peer.on("connect", () => {
                             dispatchSetStatus("established");
                         });
