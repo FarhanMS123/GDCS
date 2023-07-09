@@ -21,4 +21,9 @@ applyWSSHandler({ router: appRouter, wss, createContext });
 // NOT the router itself.
 export type AppRouter = typeof appRouter;
 
+server.on('listening', () => {
+  console.log('tRPC Listening...');
+  console.log(server.address());
+});
+
 listen(3000);

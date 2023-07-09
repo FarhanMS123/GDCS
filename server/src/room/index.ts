@@ -17,7 +17,11 @@ const clients: ClientsRoom = {};
 const RoomCode = z
   .string()
   .uuid()
-  .refine((arg) => typeof rooms[arg] == 'string', 'Room is not registered');
+  .refine(
+    (input) =>
+      typeof rooms[input]?.code == 'string' && rooms[input].code == input,
+    'Room is not registered',
+  );
 const SignalPeerSchema = z.object({
   client_id: z
     .string()
